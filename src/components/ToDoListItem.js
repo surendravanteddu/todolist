@@ -11,6 +11,6 @@ ToDoItem.propTypes = {
     name: PropTypes.string,
     description: PropTypes.string,
     uniqueKey: PropTypes.number,
-    removeItem: PropTypes.func
+    onRemove: PropTypes.func
 }
 export default ToDoItem
