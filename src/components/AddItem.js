@@ -1,11 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {useState} from 'react'
-import {fromJS} from "immutable";
+import {addItem} from "../containers/actions";
+import {useDispatch} from "react-redux";
 
-const AddItem = (props) => {
+const AddItem = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
+    const dispatch = useDispatch()
+
     const onChange = (e) => {
         if (e.target.name === 'name') {
             setName(e.target.value)
@@ -14,9 +16,7 @@ const AddItem = (props) => {
         }
     }
     const onAddItem = () => {
-        props.addItem(fromJS({
-            name, description
-        }))
+        dispatch(addItem({ name, description}))
     }
     return (<div style={{display: 'flex', width: '50%', justifyContent: 'space-around', marginTop: '20px'}}>
        <div>Name <input type='text' name='name' value={name} style={{height: '20px'}} onChange={onChange}/></div>
@@ -27,9 +27,6 @@ const AddItem = (props) => {
     </div>)
 }
 
-AddItem.propTypes = {
-    addItem: PropTypes.func
-}
 export default AddItem
 
 
