@@ -2,16 +2,21 @@ import React from 'react'
 import AddItem from "./components/AddItem";
 import ToDoList from "./containers/ToDoList";
 import {useState} from 'react'
+import {List} from 'immutable'
 
 const MyApp = () => {
-    const [items, setItems] = useState([])
+    let [items, setItems] = useState(List())
     const addItem = (item) => {
-        items.push(item)
+        items = items.push(item)
+        setItems(items)
+    }
+    const removeItem = (index) => {
+        items = items.remove(index)
         setItems(items)
     }
     return <div>
         <AddItem addItem={addItem}/>
-        <ToDoList todoItems={items}/>
+        <ToDoList todoItems={items} removeItem={removeItem}/>
     </div>
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {useState} from 'react'
+import {fromJS} from "immutable";
 
 const AddItem = (props) => {
     const [name, setName] = useState('')
@@ -13,9 +14,9 @@ const AddItem = (props) => {
         }
     }
     const onAddItem = () => {
-        props.addItem({
+        props.addItem(fromJS({
             name, description
-        })
+        }))
     }
     return (<div style={{display: 'flex', width: '50%', justifyContent: 'space-around', marginTop: '20px'}}>
        <div>Name <input type='text' name='name' value={name} style={{height: '20px'}} onChange={onChange}/></div>
