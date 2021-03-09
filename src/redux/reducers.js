@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux-immutable'
-import todoReducer from  '../containers/reducer'
+import todoReducer, {isLoading} from  '../containers/reducer'
 
 export default combineReducers({
-    todo: todoReducer
+    todo: todoReducer,
+    isLoading
 })
